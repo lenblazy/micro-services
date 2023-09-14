@@ -27,7 +27,16 @@ public class CurrencyExchangeController {
         logger.info("Retrieving exchange value from {} to {}", from, to);
 
         ExchangeValue exchangeValue = repository.findByFromAndTo(from, to);
-        exchangeValue.setPort(Integer.parseInt(environment.getProperty("server.port")));
+
+        String port = environment.getProperty(environment.getProperty("server.port"));
+
+        //CHANGE KUBERNETES
+        String host = environment.getProperty(environment.getProperty("HOSTNAME"));
+        String version = "v11";
+
+
+
+        exchangeValue.setPort(Integer.parseInt(port));
         return exchangeValue;
     }
 

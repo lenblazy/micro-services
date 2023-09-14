@@ -1,5 +1,7 @@
 package com.lenibonje.microservices.currencyconversionservice;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
@@ -32,11 +34,16 @@ public class CurrencyConversionController {
     @Autowired
     private RestTemplate restTemplate;
 
+    private Logger logger = LoggerFactory.getLogger(CurrencyConversionController.class);
+
     @GetMapping("/currency-converter/from/{from}/to/{to}/quantity/{quantity}")
     public CurrencyConversionBean convertCurrency(
             @PathVariable String from,
             @PathVariable String to,
             @PathVariable BigDecimal quantity) {
+
+        // CHange kubernets
+        logger.info("Calculate currency called with {} to {} with {} " , from , to, quantity);
 
         Map<String, String > uriVariables = new HashMap<>();
         uriVariables.put("from", from);
