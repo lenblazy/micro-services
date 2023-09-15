@@ -28,11 +28,11 @@ public class CurrencyExchangeController {
 
         ExchangeValue exchangeValue = repository.findByFromAndTo(from, to);
 
-        String port = environment.getProperty(environment.getProperty("server.port"));
+        String port = environment.getProperty("server.port");
 
         //CHANGE KUBERNETES
-        String host = environment.getProperty(environment.getProperty("HOSTNAME"));
-        String version = "v11";
+//        String host = environment.getProperty(environment.getProperty("HOSTNAME"));
+//        String version = "v11";
 
 
 
